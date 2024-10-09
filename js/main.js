@@ -1,6 +1,72 @@
 
 // Enter your code below.
 
+const formOrder = document.querySelector("#new-order-form");
+
+//add event listener
+formOrder.addEventListener('submit',(event)=>{
+
+    //prevent default form submission
+   
+    //get the values from form
+    event.preventDefault();
+    let itemName = event.target.elements["order-item-name"].value;
+    let itemPrice = event.target.elements["order-item-price"].value;
+    let orderSize = event.target.elements["order-size"].value;
+
+
+    //validate form inputs
+    let isFormValid = true;
+
+    if (isValueNotEmpty(itemName))
+    {
+      event.target.elements["order-item-name"].classList.remove("is-invalid");
+    }
+    else
+    {
+      event.target.elements["order-item-name"].classList.add("is-invalid");
+      isFormValid = false;
+    }
+
+    
+    
+    if(isValueNotEmpty(itemPrice) && isGreaterThanFive(itemPrice))
+    {
+      event.target.elements["order-item-price"].classList.remove("is-invalid");
+    }
+    else
+    { 
+      event.target.elements["order-item-price"].classList.add("is-invalid");   
+      isFormValid = false;      
+    }
+
+   
+   
+    if(isValueNotEmpty(orderSize))
+    {
+      event.target.elements["order-size"].classList.remove("is-invalid");
+    }
+    else
+    {
+      event.target.elements["order-size"].classList.add("is-invalid");
+      isFormValid = false;
+    }
+
+    
+    //if form is valid add order item to list
+    if (isFormValid)
+    {
+      addOrderItem(itemName, itemPrice, orderSize);
+    }
+
+
+    //reset input fields
+    itemName = event.target.elements["order-item-name"].value="";
+    itemPrice = event.target.elements["order-item-price"].value="";
+    orderSize = event.target.elements["order-size"].value="";
+    
+
+});
 
 // functions needed for assessment (do not change.)
 
