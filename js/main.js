@@ -17,29 +17,38 @@ formOrder.addEventListener("submit", (event) => {
   let isFormValid = true;
 
   // validate the form inputs
-  if (!isValueNotEmpty(itemName)) {
+  if (!isValueNotEmpty(itemName)) 
+  {
     itemNameInput.classList.add("is-invalid");
     isFormValid = false;
-  } else {
+  } 
+  else 
+  {
     itemNameInput.classList.remove("is-invalid");
   }
 
-  if (!isValueNotEmpty(itemPrice) || !isGreaterThanFive(itemPrice)) {
+  if (!isValueNotEmpty(itemPrice) || !isGreaterThanFive(itemPrice)) 
+  {
     itemPriceInput.classList.add("is-invalid");
     isFormValid = false;
-  } else {
+  } 
+  else 
+  {
     itemPriceInput.classList.remove("is-invalid");
   }
 
   if (!isValueNotEmpty(orderSize)) {
     orderSizeInput.classList.add("is-invalid");
     isFormValid = false;
-  } else {
+  } 
+  else 
+  {
     orderSizeInput.classList.remove("is-invalid");
   }
 
   // add the order items to the list if form is valid
-  if (isFormValid) {
+  if (isFormValid) 
+  {
     addOrderItem(itemName, itemPrice, orderSize);
   }
 
